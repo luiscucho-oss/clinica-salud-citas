@@ -107,13 +107,6 @@ Restricciones que NO puedes romper:
 Devuelveme los cuatro archivos completos con sus imports.
 ```
 
-### Qué tuve que corregir
-
-<!-- COMPLETAR. Lo más probable que revises:
-     - Que InicioScreen siga usando ContenedorConMenu y no un Scaffold suelto
-     - Que no haya quitado la TopAppBar con el icono del menu
-     - Que citas.add siga antes del navigate -->
-
 ### Qué verifiqué antes de aceptarlo
 
 - `enabled = fechaSeleccionada >= 0 && horaSeleccionada >= 0` sigue presente
