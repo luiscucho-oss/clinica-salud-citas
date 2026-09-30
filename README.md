@@ -159,6 +159,85 @@ común más cercano entre la pantalla que agrega la cita y la que la muestra.
 
 <img width="465" height="927" alt="image" src="https://github.com/user-attachments/assets/f13355e2-384b-4cd6-97ad-1d1e9c7779d4" />
 
+## Mejora con IA
+
+Esta rama (`mejora-ia`) parte de `main` e incorpora una mejora funcional y un
+rediseño visual, ambos realizados con **Gemini**, integrado en Android Studio.
+
+### Mejora funcional
+
+Se agregó la posibilidad de **cancelar una cita** con un `AlertDialog` de
+confirmación:
+
+- Las citas con estado "Confirmada" muestran un botón "Cancelar cita"
+- Las citas con estado "Completada" no lo muestran, porque no tiene sentido
+  cancelar una consulta que ya ocurrió
+- El diálogo muestra el médico, la fecha y la hora antes de confirmar
+- Solo al confirmar se elimina la cita de la lista compartida
+
+El estado del diálogo guarda **la cita seleccionada** (`Cita?`) y no un booleano,
+de modo que el mismo valor sirve para saber si el diálogo está abierto, qué datos
+mostrar y qué elemento eliminar. El diálogo se cierra poniendo ese estado en
+`null` en los tres caminos posibles: confirmar, cancelar y tocar fuera.
+
+En Compose un diálogo no se abre con una función imperativa: se incluye o se
+excluye del árbol de UI según el estado, y la recomposición hace el resto.
+
+### Mejora visual
+
+Rediseño de las siete pantallas con un mismo criterio: cabeceras con degradado
+construidas con `Brush.verticalGradient`, tarjetas con esquinas redondeadas y
+elevación, avatares e iconos dentro de círculos de color y etiquetas tipo píldora.
+Todos los colores provienen de `MaterialTheme.colorScheme`, sin valores
+hexadecimales fijos.
+
+Las pantallas del menú conservan `ContenedorConMenu`, de modo que el menú lateral
+sigue accesible desde la barra superior en Inicio, Mis citas, Historial médico y
+Perfil.
+
+### Documentación de los prompts
+
+Los tres prompts utilizados, junto con lo que hubo que verificar y corregir de
+cada respuesta, están documentados en [PROMPTS.md](PROMPTS.md).
+
+## Capturas de la mejora
+
+**Inicio**
+
+<img width="398" height="765" alt="image" src="https://github.com/user-attachments/assets/3833970f-df0d-4516-8d7d-39007e837a00" />
+
+**Menú lateral abierto**
+
+<img width="399" height="772" alt="image" src="https://github.com/user-attachments/assets/e9921b95-3027-47a6-8853-87cf3e99fc69" />
+
+**Perfil del médico**
+
+<img width="386" height="768" alt="image" src="https://github.com/user-attachments/assets/40fd8bcb-8da3-4611-89c5-45e889768557" />
+
+**Agendar cita**
+
+<img width="395" height="773" alt="image" src="https://github.com/user-attachments/assets/155ef781-fbb7-4619-aebd-8cb2c21871b2" />
+
+**Confirmación**
+
+<img width="387" height="773" alt="image" src="https://github.com/user-attachments/assets/276b3b61-791c-4fa9-b9e4-1b89cc2df439" />
+
+**Mis citas**
+
+<img width="378" height="767" alt="image" src="https://github.com/user-attachments/assets/da7aab52-615e-45f6-8bcd-9a6c416573e9" />
+
+**AlertDialog de cancelación**
+
+<img width="378" height="773" alt="image" src="https://github.com/user-attachments/assets/ae6396e5-a9af-4c84-bcbd-8794b3dea2e3" />
+
+**Historial médico**
+
+<img width="387" height="764" alt="image" src="https://github.com/user-attachments/assets/ce68d330-62c2-4ef8-a952-408040fd2090" />
+
+**Perfil**
+
+<img width="376" height="780" alt="image" src="https://github.com/user-attachments/assets/c094a65e-686f-4f0c-a295-ba2e1dddc6ce" />
+
 
 ## Cómo ejecutar
 
